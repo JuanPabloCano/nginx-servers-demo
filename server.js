@@ -2,8 +2,11 @@ import express from "express";
 import os from "os";
 import cluster from "cluster";
 import rutas from "./routes/index.js";
+import compression from "compression";
 
 const app = express();
+app.use(compression());
+
 const cpus = os.cpus();
 const PORT = Number(process.argv[2]) || 3000;
 const iscluster = process.argv[3] == "cluster";
